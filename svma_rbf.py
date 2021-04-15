@@ -11,14 +11,14 @@ tv0 = np.squeeze(tv)
 
 tv1 = []
 for v in tv0:
-    tv1.append(np.round(v*10))
+    tv1.append(v*10)
 print(tv1)
 
 sv0 = []
 sv3 = []
 for x in tv0:
-    sv0.append(np.round(x*10+2))
-    sv3.append(np.round(x*10+1))
+    sv0.append(x*10+2)
+    sv3.append(x*10+1)
 
 print(sv0)
 print(sv3)
@@ -32,8 +32,9 @@ for v in vectors:
     for x in v:
         data_set =  {"_instr_No.": count, 
                     "addr": hex(count), 
-                    "data": hex(int(v[count2])), 
-                    "mode": "1"}
+                    "data": float(v[count2]), 
+                    "mode": "1",
+                    "isfloat": "0"}
         full_set.append(data_set)
         #json_dump = json.dumps(data_set, indent=4)
         #print(json_dump)
@@ -42,8 +43,9 @@ for v in vectors:
         count2 = count2 + 1
     data_set =  {"_instr_No.": count, 
                     "addr": hex(count), 
-                    "data": hex(1), 
-                    "mode": "1"}
+                    "data": 1.0, 
+                    "mode": "1",
+                    "isfloat": "0"}
     full_set.append(data_set)
   
     #print(",")

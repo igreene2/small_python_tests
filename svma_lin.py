@@ -15,7 +15,7 @@ vectors = [sv0, sv3, tv0]
 for v in vectors:
     count = 0
     for x in v:
-        x = np.round(x*10)
+        x = x*10
         v[count] = x
         count = count + 1
         print(x)
@@ -27,8 +27,9 @@ for v in vectors:
     for x in v:
         data_set =  {"_instr_No.": count, 
                     "addr": hex(count), 
-                    "data": hex(int(v[count2])), 
-                    "mode": "1"}
+                    "data": v[count2], 
+                    "mode": "1",
+                    "isfloat": "0"}
         full_set.append(data_set)
         #json_dump = json.dumps(data_set, indent=4)
         #print(json_dump)
@@ -37,8 +38,9 @@ for v in vectors:
         count2 = count2 + 1
     data_set =  {"_instr_No.": count, 
                     "addr": hex(count), 
-                    "data": hex(1), 
-                    "mode": "1"}
+                    "data": -0.000108612, 
+                    "mode": "1",
+                    "isfloat": "0"}
     full_set.append(data_set)
   
     #print(",")
@@ -50,7 +52,7 @@ print(json_dump)
 supportVectors = [sv0, sv3];
 #print(supportVectors);
 
-alpha = 1
+alpha = -0.000108612
 b = -1
 th = 0
 sum = 0
